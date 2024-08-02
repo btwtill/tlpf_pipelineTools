@@ -28,6 +28,7 @@ ICON_DIR = os.path.join(os.path.dirname(__file__), "pipelineTools_icons")
 SCRIPTS_DIR = os.path.join(os.path.dirname(__file__), "shelf_user_utils_scripts")
 PLATFORM = sys.platform
 
+
 sys.path.append(SCRIPTS_DIR)
 
 
@@ -51,11 +52,14 @@ def reload_shelf(shelf_name=SHELF_NAME):
         return
 
 
+from tlpf_pipelineTools.UITemplates import maya_UI_Template
+importlib.reload(maya_UI_Template)
+
 class loadPiplineShelf(shelf_base._shelf):
     def build(self):
-        {
+    
+        #Test UI
+        self.addButton(label="testUI", icon=ICON_DIR + "/testUi.png", command=maya_UI_Template.openWindow)
+        
         # Separator
         self.addButton(label="", icon=ICON_DIR + "/sep.png", command="")
-
-        #Add Shelf Tools Here
-        }
